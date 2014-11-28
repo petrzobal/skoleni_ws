@@ -26,7 +26,7 @@ public class Main {
         Response responseEntity = client
                           .target("http://localhost:9998")
                           .path("hello")
-                          .request(MediaType.APPLICATION_XML).get();
-        System.out.print("Response: " + responseEntity.readEntity(Point.class));
+                          .request(MediaType.APPLICATION_JSON).get();
+        System.out.print("Response: " + responseEntity.readEntity(Point.class) + "***");
     }
 }

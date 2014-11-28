@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
 public class RSHelloWorld {
     
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Point sayHello() { //@Context ServletContext context){
         //return context.getServerInfo();
         return new Point();
