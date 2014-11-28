@@ -5,8 +5,10 @@
  */
 package com.mycompany.rservice;
 
+import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 
 /**
  *
@@ -16,7 +18,8 @@ import javax.ws.rs.Path;
 public class RSHelloWorld {
     
     @GET
-    String sayHello(){
-        return "Hello";
+    public String sayHello(@Context ServletContext context){
+        return context.getServerInfo();
+        //return "Hello";
     }
 }
