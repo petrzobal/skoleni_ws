@@ -15,7 +15,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class MyResourceConfig extends ResourceConfig{
     
     public MyResourceConfig(){
-        super(RSHelloWorld.class);
+        super(RSHelloWorld.class, MyInterceptor.class);
         register(new LoggingFilter());
     }
 }
