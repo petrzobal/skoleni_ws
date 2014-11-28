@@ -18,8 +18,8 @@ import javax.ws.rs.core.Context;
 public class RSHelloWorld {
     
     @GET
-    public String sayHello(@Context ServletContext context){
-        return context.getServerInfo();
-        //return "Hello";
+    public String sayHello() { //@Context ServletContext context){
+        //return context.getServerInfo();
+        return "Hello";
     }
 }
