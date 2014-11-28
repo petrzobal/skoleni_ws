@@ -6,6 +6,7 @@
 package com.mycompany.rsclient;
 
 import com.mycompany.rservice.Point;
+import java.util.logging.Logger;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
@@ -20,7 +21,7 @@ public class Main {
     public static void main(String[] args) {
         Client client = ClientBuilder.newClient();
         
-        client.register(new LoggingFilter());
+        client.register(new LoggingFilter(Logger.getAnonymousLogger(), true));
         
         Response responseEntity = client
                           .target("http://localhost:9998")
