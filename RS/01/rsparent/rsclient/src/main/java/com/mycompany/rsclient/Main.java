@@ -5,8 +5,11 @@
  */
 package com.mycompany.rsclient;
 
+import com.mycompany.rservice.Point;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.glassfish.jersey.filter.LoggingFilter;
 
 /**
@@ -19,10 +22,10 @@ public class Main {
         
         client.register(new LoggingFilter());
         
-        String responseEntity = client
+        Response responseEntity = client
                           .target("http://localhost:9998")
                           .path("hello")
-                          .request().get(String.class);
-        System.out.print(responseEntity);
+                          .request(MediaType.APPLICATION_XML).get();
+        System.out.print("Response: " + responseEntity.readEntity(Point.class));
     }
 }

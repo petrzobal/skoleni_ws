@@ -8,7 +8,9 @@ package com.mycompany.rservice;
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -18,8 +20,9 @@ import javax.ws.rs.core.Context;
 public class RSHelloWorld {
     
     @GET
-    public String sayHello() { //@Context ServletContext context){
+    @Produces(MediaType.APPLICATION_XML)
+    public Point sayHello() { //@Context ServletContext context){
         //return context.getServerInfo();
-        return "Hello";
+        return new Point();
     }
 }
