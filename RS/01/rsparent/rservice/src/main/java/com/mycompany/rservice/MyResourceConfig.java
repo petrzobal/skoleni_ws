@@ -7,6 +7,7 @@ package com.mycompany.rservice;
 
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.ServerProperties;
 
 /**
  *
@@ -17,5 +18,6 @@ public class MyResourceConfig extends ResourceConfig{
     public MyResourceConfig(){
         super(RSHelloWorld.class, MyInterceptor.class);
         register(new LoggingFilter());
+        property(ServerProperties.PROVIDER_PACKAGES,  new String[] {"com.mycompany.rservice"});
     }
 }
