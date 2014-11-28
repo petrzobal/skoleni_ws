@@ -5,12 +5,12 @@
  */
 package com.mycompany.rservice;
 
+import java.io.IOException;
 import java.net.URI;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.ext.RuntimeDelegate;
 import org.glassfish.grizzly.http.server.HttpHandler;
-//import org.glassfish.grizzly.http.server.HttpServer;
-import com.sun.net.httpserver.HttpServer;
+import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -20,9 +20,10 @@ import org.glassfish.jersey.server.ResourceConfig;
  */
 public class Main {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
         ResourceConfig config = new ResourceConfig(RSHelloWorld.class);
-        HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
+        GrizzlyHttpServerFactory.createHttpServer(baseUri, config);
+        System.in.read();
     }
 }
