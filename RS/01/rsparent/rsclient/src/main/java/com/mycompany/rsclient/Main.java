@@ -5,7 +5,9 @@
  */
 package com.mycompany.rsclient;
 
+import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import org.glassfish.jersey.filter.LoggingFilter;
 
 /**
  *
@@ -13,8 +15,11 @@ import javax.ws.rs.client.ClientBuilder;
  */
 public class Main {
     public static void main(String[] args) {
-        String responseEntity = ClientBuilder
-                          .newClient()
+        Client client = ClientBuilder.newClient();
+        
+        client.register(new LoggingFilter());
+        
+        String responseEntity = client
                           .target("http://localhost:9998")
                           .path("hello")
                           .request().get(String.class);
